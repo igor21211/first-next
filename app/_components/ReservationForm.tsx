@@ -5,9 +5,10 @@ import { Booking, BookingData, Cabin } from "@/app/_lib/data-service";
 import { differenceInDays } from "date-fns";
 import { User } from "next-auth";
 import { createBooking } from "../_lib/action";
+import UpdateButton from "./UpdateButton";
 
 function ReservationForm({ cabin, user }: { cabin: Cabin; user: User }) {
-  const { range } = useReservation();
+  const { range, resetRange } = useReservation();
   const { maxCapacity, regularPrice, discount, id } = cabin;
 
   const startDate = range.from;
@@ -84,9 +85,9 @@ function ReservationForm({ cabin, user }: { cabin: Cabin; user: User }) {
         <div className="flex justify-end items-center gap-6">
           <p className="text-primary-300 text-base">Start by selecting dates</p>
 
-          <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-            Reserve now
-          </button>
+          {numNights > 0 && (
+            <UpdateButton pendingLabel="Reserving...">Reserve now</UpdateButton>
+          )}
         </div>
       </form>
     </div>

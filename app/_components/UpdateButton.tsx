@@ -1,7 +1,13 @@
 "use client";
 import { useFormStatus } from "react-dom";
 
-const UpdateButton = ({ children }: { children: React.ReactNode }) => {
+const UpdateButton = ({
+  children,
+  pendingLabel,
+}: {
+  children: React.ReactNode;
+  pendingLabel: string;
+}) => {
   const { pending } = useFormStatus();
 
   return (
@@ -10,7 +16,7 @@ const UpdateButton = ({ children }: { children: React.ReactNode }) => {
         pending ? "bg-primary-600" : "bg-accent-500 "
       }`}
     >
-      {pending ? "Updating..." : children}
+      {pending ? pendingLabel : children}
     </button>
   );
 };

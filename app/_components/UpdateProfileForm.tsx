@@ -62,7 +62,7 @@ const UpdateProfileForm = ({
       </div>
 
       <div className="flex justify-end items-center gap-6">
-        <UpdateButton>Update profile</UpdateButton>
+        <UpdateButton pendingLabel="Updating...">Update profile</UpdateButton>
       </div>
     </form>
   );
