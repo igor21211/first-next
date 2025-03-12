@@ -1,14 +1,14 @@
 "use client";
 
 import { useReservation } from "./ReservationContext";
-import { Booking, BookingData, Cabin } from "@/app/_lib/data-service";
+import { BookingData, Cabin } from "@/app/_lib/data-service";
 import { differenceInDays } from "date-fns";
 import { User } from "next-auth";
 import { createBooking } from "../_lib/action";
 import UpdateButton from "./UpdateButton";
 
 function ReservationForm({ cabin, user }: { cabin: Cabin; user: User }) {
-  const { range, resetRange } = useReservation();
+  const { range } = useReservation();
   const { maxCapacity, regularPrice, discount, id } = cabin;
 
   const startDate = range.from;
